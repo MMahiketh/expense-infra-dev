@@ -18,6 +18,11 @@ variable "other_instances" {
   default = ["ansible", "bastion"]
 }
 
+variable "alb_instances" {
+  type    = list(string)
+  default = ["app_alb"]
+}
+
 # Ports
 variable "mysql_port" {
   type    = number

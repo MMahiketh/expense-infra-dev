@@ -13,3 +13,7 @@ output "frontend_sg_id" {
 output "bastion_sg_id" {
   value = module.bastion.id
 }
+
+output "app_alb_sg_id" {
+  value = module.app_alb_sg.id
+}
