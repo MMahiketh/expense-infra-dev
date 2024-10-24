@@ -20,7 +20,7 @@ variable "other_instances" {
 
 variable "alb_instances" {
   type    = list(string)
-  default = ["app_alb"]
+  default = ["app-alb"]
 }
 
 # Ports
