@@ -17,3 +17,7 @@ output "bastion_sg_id" {
 output "app_alb_sg_id" {
   value = module.app_alb_sg.id
 }
+
+output "vpn_sg_id" {
+  value = module.vpn.id
+}

@@ -15,7 +15,7 @@ variable "instances" {
 
 variable "other_instances" {
   type    = list(string)
-  default = ["ansible", "bastion"]
+  default = ["ansible", "bastion", "vpn"]
 }
 
 variable "alb_instances" {
