@@ -11,8 +11,8 @@ module "bastion" {
 # Allow connection from bastion server to servers
 resource "aws_security_group_rule" "mysql_bastion" {
   type                     = "ingress"
-  from_port                = var.ssh_port
-  to_port                  = var.ssh_port
+  from_port                = var.mysql_port
+  to_port                  = var.mysql_port
   protocol                 = local.protocol
   source_security_group_id = module.bastion.id
   security_group_id        = module.mysql.id
