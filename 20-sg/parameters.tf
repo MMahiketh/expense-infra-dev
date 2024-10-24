@@ -28,3 +28,9 @@ resource "aws_ssm_parameter" "bastion_sg_id" {
   type  = "String"
   value = module.bastion.id
 }
+
+resource "aws_ssm_parameter" "app_alb_sg_id" {
+  name  = "${local.ssm_prefix}/${var.alb_instances[0]}/sg_id"
+  type  = "String"
+  value = module.app_alb_sg.id
+}
