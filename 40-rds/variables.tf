@@ -23,3 +23,9 @@ variable "rds_tags" {
   type    = map(any)
   default = {}
 }
+
+#Domain name for route 53 records
+variable "domain_name" {
+  type    = string
+  default = "mahdo.site"
+}

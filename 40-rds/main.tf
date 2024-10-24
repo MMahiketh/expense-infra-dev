@@ -8,11 +8,11 @@ module "db" {
   instance_class    = var.instance_type
   allocated_storage = 5
 
-  db_name  = "transactions"
+  db_name                     = "transactions"
   manage_master_user_password = false
-  username = "root"
-  password = "ExpenseApp1"
-  port     = "3306"
+  username                    = "root"
+  password                    = "ExpenseApp1"
+  port                        = "3306"
 
   skip_final_snapshot = true
 
@@ -26,7 +26,7 @@ module "db" {
 
   # DB subnet group
   db_subnet_group_name = local.db_subnet_group_name
-  
+
   # DB parameter group
   family = "mysql8.0"
 
@@ -62,5 +62,22 @@ module "db" {
         },
       ]
     },
+  ]
+}
+
+#Create route 53 record for rds ( mysql-dev.mahdo.site )
+module "records" {
+  source = "terraform-aws-modules/route53/aws//modules/records"
+
+  zone_name = var.domain_name
+
+  records = [
+    {
+      name            = "${var.instances}-${var.environment}" #mysql-dev.mahdo.site
+      type            = "CNAME"
+      ttl             = 360
+      allow_overwrite = true
+      records         = [module.db.db_instance_address]
+    }
   ]
 }
