@@ -1,6 +1,6 @@
 # Get security group id
 data "aws_ssm_parameter" "mysql_sg_id" {
-  name = "${local.ssm_prefix}/${var.instances}/sg_id"
+  name = "${local.ssm_prefix}/${var.instance}/sg_id"
 }
 
 # Get database subnet group id

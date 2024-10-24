@@ -8,7 +8,7 @@ variable "environment" {
   default = "dev"
 }
 
-variable "instances" {
+variable "instance" {
   type    = string
   default = "mysql"
 }

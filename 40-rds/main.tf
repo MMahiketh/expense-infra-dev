@@ -20,7 +20,7 @@ module "db" {
 
   tags = merge(
     local.common_tags,
-    { Name = "${local.resource_name}-${var.instances}" },
+    { Name = "${local.resource_name}-${var.instance}" },
     var.rds_tags
   )
 
@@ -73,7 +73,7 @@ module "records" {
 
   records = [
     {
-      name            = "${var.instances}-${var.environment}" #mysql-dev.mahdo.site
+      name            = "${var.instance}-${var.environment}" #mysql-dev.mahdo.site
       type            = "CNAME"
       ttl             = 360
       allow_overwrite = true
