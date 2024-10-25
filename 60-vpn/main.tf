@@ -9,6 +9,12 @@ module "vpn" {
   vpc_security_group_ids = [local.vpn_sg_id]
   subnet_id              = local.public_subnet_id
 
+  user_data = <<-EOF
+                #! /bin/bash
+                wget https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
+                chmod +x openvpn-install.sh
+              EOF
+
   tags = merge(
     { Name = "OpenVpn" },
     var.vpn_tags

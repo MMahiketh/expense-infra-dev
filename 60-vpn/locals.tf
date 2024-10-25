@@ -10,7 +10,7 @@ locals {
     Terraform   = "true"
   }
 
-  ami_id = data.aws_ami.openvpn_ami.id
+  ami_id = data.aws_ami.ubuntu_ami.id
 
   public_subnet_id = split(",", data.aws_ssm_parameter.public_subnet_ids.value)[0]
 }

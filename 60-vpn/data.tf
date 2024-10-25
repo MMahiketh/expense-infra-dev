@@ -1,11 +1,11 @@
 # Amazon linux 2023 AMI
-data "aws_ami" "openvpn_ami" {
-  owners      = ["679593333241"]
+data "aws_ami" "ubuntu_ami" {
+  owners      = ["099720109477"]
   most_recent = true
 
   filter {
     name   = "name"
-    values = ["OpenVPN Access Server Community Image-fe8020db*"]
+    values = ["ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04*"]
   }
 
   filter {
