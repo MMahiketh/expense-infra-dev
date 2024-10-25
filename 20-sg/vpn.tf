@@ -91,12 +91,12 @@ resource "aws_security_group_rule" "vpn_internet_945" {
   security_group_id = module.vpn.id
 }
 
-## port 1194
+## port 1194 protocol udp 
 resource "aws_security_group_rule" "vpn_internet_1194" {
   type              = "ingress"
   from_port         = 1194
   to_port           = 1194
-  protocol          = local.protocol
+  protocol          = "udp"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = module.vpn.id
 }
