@@ -23,7 +23,7 @@ resource "aws_ssm_parameter" "database_subnet_ids" {
 }
 
 resource "aws_ssm_parameter" "db_subnet_group_id" {
-  name = "${local.ssm_prefix}/${local.network[2]}/subnet_group/id"
-  type = "String"
+  name  = "${local.ssm_prefix}/${local.network[2]}/subnet_group/id"
+  type  = "String"
   value = module.vpc.db_subnet_group_id
 }
