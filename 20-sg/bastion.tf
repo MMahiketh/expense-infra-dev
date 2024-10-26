@@ -8,7 +8,8 @@ module "bastion" {
   vpc_id      = local.vpc_id
 }
 
-# Allow connection from bastion server to servers
+# Allow connection from bastion server to
+## mysql
 resource "aws_security_group_rule" "mysql_bastion" {
   type                     = "ingress"
   from_port                = var.mysql_port
@@ -18,6 +19,7 @@ resource "aws_security_group_rule" "mysql_bastion" {
   security_group_id        = module.mysql.id
 }
 
+## backend
 resource "aws_security_group_rule" "backend_bastion" {
   type                     = "ingress"
   from_port                = var.ssh_port
@@ -27,6 +29,7 @@ resource "aws_security_group_rule" "backend_bastion" {
   security_group_id        = module.backend.id
 }
 
+## frontend
 resource "aws_security_group_rule" "frontend_bastion" {
   type                     = "ingress"
   from_port                = var.ssh_port

@@ -27,6 +27,7 @@ module "frontend" {
 }
 
 # Rules to allow connections for My App to work
+## MySQL accept connection form backend
 resource "aws_security_group_rule" "mysql_backend" {
   type                     = "ingress"
   from_port                = var.mysql_port
