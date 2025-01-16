@@ -18,6 +18,11 @@ variable "instance_type" {
   default = "t3.micro"
 }
 
+variable "mysql_pass" {
+  type    = string
+  default = "ExpenseApp1"
+}
+
 # tags
 variable "backend_tags" {
   type    = map(any)
