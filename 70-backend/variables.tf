@@ -23,6 +23,11 @@ variable "mysql_pass" {
   default = "ExpenseApp1"
 }
 
+variable "domain" {
+  type    = string
+  default = "mahdo.site"
+}
+
 # tags
 variable "backend_tags" {
   type    = map(any)

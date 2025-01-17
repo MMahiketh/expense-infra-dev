@@ -39,3 +39,13 @@ data "aws_ssm_parameter" "sg_id" {
 data "aws_ssm_parameter" "private_subnet_ids" {
   name = "${local.ssm_prefix}/private/subnet/ids"
 }
+
+#Get vpc id
+data "aws_ssm_parameter" "vpc_id" {
+  name = "${local.ssm_prefix}/vpc/id"
+}
+
+#Get app alb listerner arn
+data "aws_ssm_parameter" "alb_listner_arn" {
+  name = "${local.ssm_prefix}/app-alb-listner/arn"
+}
