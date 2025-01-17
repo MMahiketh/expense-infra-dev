@@ -28,12 +28,30 @@ resource "aws_security_group_rule" "backend_vpn" {
   source_security_group_id = module.vpn.id
   security_group_id        = module.backend.id
 }
+#api_port
+resource "aws_security_group_rule" "backend_vpn_8080" {
+  type                     = "ingress"
+  from_port                = var.api_port
+  to_port                  = var.api_port
+  protocol                 = local.protocol
+  source_security_group_id = module.vpn.id
+  security_group_id        = module.backend.id
+}
 
 ## forntend
 resource "aws_security_group_rule" "frontend_vpn" {
   type                     = "ingress"
   from_port                = var.ssh_port
   to_port                  = var.ssh_port
+  protocol                 = local.protocol
+  source_security_group_id = module.vpn.id
+  security_group_id        = module.frontend.id
+}
+#http_port
+resource "aws_security_group_rule" "frontend_vpn_80" {
+  type                     = "ingress"
+  from_port                = var.http_port
+  to_port                  = var.http_port
   protocol                 = local.protocol
   source_security_group_id = module.vpn.id
   security_group_id        = module.frontend.id
