@@ -35,6 +35,12 @@ resource "aws_ssm_parameter" "app_alb_sg_id" {
   value = module.app_alb_sg.id
 }
 
+resource "aws_ssm_parameter" "web_alb_sg_id" {
+  name  = "${local.ssm_prefix}/${var.alb_instances[1]}/sg_id"
+  type  = "String"
+  value = module.web_alb_sg.id
+}
+
 resource "aws_ssm_parameter" "vpn_sg_id" {
   name  = "${local.ssm_prefix}/${var.other_instances[2]}/sg_id"
   type  = "String"
