@@ -77,5 +77,5 @@ module "records" {
 resource "aws_ssm_parameter" "alb_listner_arn" {
   name  = "${local.ssm_prefix}/${var.instance}-listner/arn"
   type  = "String"
-  value = aws_alb_listener.http.arn
+  value = aws_lb_listener.https.arn
 }
