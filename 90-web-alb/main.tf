@@ -54,7 +54,7 @@ resource "aws_lb_listener" "https" {
   }
 }
 
-#Route 53 record for web alb ( *.expense-dev.mahdo.site )
+#Route 53 record for web alb ( expense-dev.mahdo.site )
 module "records" {
   source = "terraform-aws-modules/route53/aws//modules/records"
 
@@ -62,7 +62,7 @@ module "records" {
 
   records = [
     {
-      name = "*.expense-${var.environment}" # *.expense-dev.mahdo.site
+      name = "${local.resource_name}"     # expense-dev.mahdo.site
       type = "A"
       alias = {
         name    = module.alb.dns_name

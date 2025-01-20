@@ -79,12 +79,12 @@ resource "aws_lb_target_group" "main" {
   health_check {
     healthy_threshold   = 2
     unhealthy_threshold = 2
-    interval            = 90
+    interval            = 5
     matcher             = "200-299"
     path                = "/health"
     port                = 8080
     protocol            = "HTTP"
-    timeout             = 5
+    timeout             = 4
   }
 }
 
@@ -118,7 +118,7 @@ resource "aws_autoscaling_group" "main" {
   name                      = "${local.resource_name}-${var.instance}"
   max_size                  = 10
   min_size                  = 2
-  health_check_grace_period = 90
+  health_check_grace_period = 60
   health_check_type         = "ELB"
   desired_capacity          = 2
   target_group_arns         = [aws_lb_target_group.main.arn]
